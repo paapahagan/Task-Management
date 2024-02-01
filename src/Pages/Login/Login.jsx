@@ -28,7 +28,6 @@ function Login() {
             <label>Password</label>
             <Input type="password" placeholder="Enter your Password..." />
           </InputDiv>
-
           <PrimaryButton>Login</PrimaryButton>
           <HStack>
             <a href="#">Forgot password?</a>
