@@ -3,6 +3,7 @@ import { PrimaryButton } from "../../components/Styled/Button.styles";
 import {
   ContainerDiv,
   Google,
+  HStack,
   HeaderDiv,
   InnerDiv,
   InputDiv,
@@ -11,13 +12,14 @@ import {
 import { Input } from "../../components/Styled/input/Input.styles";
 import { useContext } from "react";
 import { SignUpContext } from "../../context/SignUpContext";
+import { Link } from "react-router-dom";
 
 function SignUp() {
-  const { register, handleSubmit, control, errors, onSubmit } =
+  const { register, handleSubmit, errors, onSubmit } =
     useContext(SignUpContext);
   return (
     <ContainerDiv>
-      <VStack onSubmit={handleSubmit}>
+      <VStack onSubmit={handleSubmit(onSubmit)}>
         <HeaderDiv>
           <h1>Sign Up</h1>
         </HeaderDiv>
@@ -51,11 +53,18 @@ function SignUp() {
             />
             <span style={{ color: "red" }}>{errors.password?.message}</span>
           </InputDiv>
-          <PrimaryButton onClick={handleSubmit}>SignUp</PrimaryButton>
-
+          <PrimaryButton onClick={handleSubmit(onSubmit)}>SignUp</PrimaryButton>
           <Google>
             <GoogleButton />
           </Google>
+          <HStack>
+            <p>
+              Already have an account?{" "}
+              <Link to="/login" style={{ color: "white", fontWeight: "bold" }}>
+                Login
+              </Link>
+            </p>
+          </HStack>
         </InnerDiv>
       </VStack>
     </ContainerDiv>

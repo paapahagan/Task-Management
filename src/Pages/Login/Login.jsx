@@ -10,6 +10,7 @@ import {
   VStack,
 } from "../../components/Styled/div/div.styles";
 import { Input } from "../../components/Styled/input/Input.styles";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -35,6 +36,14 @@ function Login() {
           <Google>
             <GoogleButton />
           </Google>
+          <HStack>
+            <p>
+              Don't have an account?
+              <Link to="/" style={{ color: "white", fontWeight: "bold" }}>
+                SignUp
+              </Link>
+            </p>
+          </HStack>
         </InnerDiv>
       </VStack>
     </ContainerDiv>

@@ -7,3 +7,10 @@ export const Input = styled.input`
   background-color: unset;
   border-bottom: 1px solid black;
 `;
+
+export const FormInput = styled.input`
+  width: inherit;
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 5px;
+`;

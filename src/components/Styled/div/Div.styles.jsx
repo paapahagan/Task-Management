@@ -41,10 +41,10 @@ export const VStack = styled.div`
 export const InnerDiv = styled.div`
   display: grid;
   align-items: center;
-
   padding: 40px 20px;
   gap: 30px;
   width: 100%;
+  /* text-align: center; */
 `;
 export const InputDiv = styled(InnerDiv)`
   gap: 0px;
@@ -64,4 +64,50 @@ export const HeaderDiv = styled.div`
 export const Google = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+// Div for Todo
+export const HeadDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+
+  @media (min-width: 600px) {
+    width: 50%;
+  }
+`;
+export const TaskForm = styled.form`
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  margin: 5px 0;
+
+  @media (min-width: 600px) {
+    width: 50%;
+  }
+`;
+export const DivContainer = styled.div`
+  display: grid;
+  padding: 10px;
+  margin: 0px;
+`;
+
+export const DisplayDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`;
+
+//Task
+export const TasksDiv = styled(DivContainer)`
+  border: 1px solid black;
+  border-radius: 5px;
+
+  @media (min-width: 600px) {
+    width: 50%;
+  }
 `;

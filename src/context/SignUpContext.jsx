@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { NewSignUp } from "../firebase/Firebase";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
   name: yup.string().required(),
@@ -22,6 +23,7 @@ export const SignUpContext = createContext();
 function SignUpProvider({ children }) {
   // State for keeping track of form input values
   const [errorMessage, setErrorMessage] = useState();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -33,9 +35,11 @@ function SignUpProvider({ children }) {
   const onSubmit = async (data) => {
     try {
       await NewSignUp(data.email, data.password);
-    } catch {
+      navigate("/home");
+    } catch (error) {
       setErrorMessage(data.errorMessage);
     }
+    console.log(data);
   };
 
   return (

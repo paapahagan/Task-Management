@@ -12,3 +12,16 @@ export const PrimaryButton = styled.button`
     transition: 0.6s ease-out;
   }
 `;
+
+export const AddButton = styled.button`
+  border-radius: 5px;
+  border: 1px solid green;
+  background-color: transparent;
+  padding: 10px 4px;
+  &:hover {
+    background-color: green;
+    border: none;
+    color: white;
+    transition: 0.6s ease-out;
+  }
+`;
