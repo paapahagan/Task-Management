@@ -3,16 +3,19 @@ import HomePage from "./Pages/home/HomePage";
 import SignUp from "./Pages/SignUp/SignUp";
 import Login from "./Pages/Login/Login";
 import SignUpProvider from "./context/SignUpContext";
+import LoginProvider from "./context/LoginContext";
 
 function App() {
   return (
     <Router>
       <SignUpProvider>
-        <Routes>
-          <Route path="/" element={<SignUp />} />
-          <Route path="login" element={<Login />} />
-          <Route path="/home" element={<HomePage />} />
-        </Routes>
+        <LoginProvider>
+          <Routes>
+            <Route path="/" element={<SignUp />} />
+            <Route path="login" element={<Login />} />
+            <Route path="/home" element={<HomePage />} />
+          </Routes>
+        </LoginProvider>
       </SignUpProvider>
     </Router>
   );

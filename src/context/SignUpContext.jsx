@@ -2,8 +2,9 @@ import { createContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { NewSignUp } from "../firebase/Firebase";
+import { NewSignUp, auth } from "../firebase/Firebase";
 import { useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const schema = yup.object({
   name: yup.string().required(),
@@ -39,7 +40,22 @@ function SignUpProvider({ children }) {
     } catch (error) {
       setErrorMessage(data.errorMessage);
     }
-    console.log(data);
+    // console.log(data);
+  };
+
+  //SignIn With Google
+  const SignInGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
+
+  const handleGoogle = async () => {
+    try {
+      await SignInGoogle();
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -50,6 +66,7 @@ function SignUpProvider({ children }) {
         control,
         errors,
         onSubmit,
+        handleGoogle,
       }}
     >
       {children}

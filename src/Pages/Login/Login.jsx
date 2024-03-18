@@ -11,11 +11,14 @@ import {
 } from "../../components/Styled/div/div.styles";
 import { Input } from "../../components/Styled/input/Input.styles";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { LoginContext } from "../../context/LoginContext";
 
 function Login() {
+  const { register, handleSubmit, errors, onSubmit } = useContext(LoginContext);
   return (
     <ContainerDiv>
-      <VStack>
+      <VStack onSubmit={handleSubmit(onSubmit)}>
         <HeaderDiv>
           <h1>Welcome Back</h1>
           <h2>Login</h2>
@@ -23,13 +26,26 @@ function Login() {
         <InnerDiv>
           <InputDiv>
             <label>Email</label>
-            <Input placeholder="Enter your Email..." />
+            <Input
+              type="email"
+              placeholder="Enter your Email..."
+              required
+              {...register("email")}
+            />
           </InputDiv>
           <InputDiv>
             <label>Password</label>
-            <Input type="password" placeholder="Enter your Password..." />
+            <Input
+              type="password"
+              placeholder="Enter your Password..."
+              required
+              {...register("password")}
+            />
+            <span style={{ color: "red" }}>{errors.password?.message}</span>
           </InputDiv>
-          <PrimaryButton>Login</PrimaryButton>
+          <PrimaryButton type="submit" onClick={handleSubmit(onSubmit)}>
+            Login
+          </PrimaryButton>
           <HStack>
             <a href="#">Forgot password?</a>
           </HStack>

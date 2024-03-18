@@ -15,7 +15,7 @@ import { SignUpContext } from "../../context/SignUpContext";
 import { Link } from "react-router-dom";
 
 function SignUp() {
-  const { register, handleSubmit, errors, onSubmit } =
+  const { register, handleSubmit, errors, onSubmit, handleGoogle } =
     useContext(SignUpContext);
   return (
     <ContainerDiv>
@@ -55,7 +55,7 @@ function SignUp() {
           </InputDiv>
           <PrimaryButton onClick={handleSubmit(onSubmit)}>SignUp</PrimaryButton>
           <Google>
-            <GoogleButton />
+            <GoogleButton onClick={handleGoogle} />
           </Google>
           <HStack>
             <p>
